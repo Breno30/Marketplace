@@ -1,6 +1,6 @@
-function getPosts(page) {
-    // const url = new URL(location.href);
-    // const page = url.searchParams.get("page");
+function getPage() {
+    const url = new URL(location.href);
+    const page = url.searchParams.get("page") ? url.searchParams.get("page") : 1;
 
     $.ajax({
         type: 'GET',
