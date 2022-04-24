@@ -6,6 +6,7 @@ router.use(express.json());
 mongoose.connect('mongodb://localhost/marketplace');
 
 const postSchema = new mongoose.Schema({
+    thumbnail:String,
     title: String,
     description: String,
     price: Number,
