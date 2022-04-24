@@ -29,6 +29,12 @@ router.get('/posts', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
+router.get('/posts/count', (req, res) => {
+    Post
+        .countDocuments()
+        .then(result => res.send(result.toString()));
+});
+
 router.get('/post/:id', (req, res) => {
     const id = req.params.id.toString();
 
