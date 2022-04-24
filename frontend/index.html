@@ -9,24 +9,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="postElement.js" defer></script>
 </head>
 
 <body>
     <div id="top-bar"></div>
     <div id="side-menu"></div>
     <div id="posts">
-        <!-- <div class="card">
+        <!--<div class="card">
             <div class="row no-gutters">
                 <div class="col-auto">
-                    <img src="data:image/png;base64,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"
-                        class="img-fluid" alt="">
+                    <img id="image-post" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png?v8">
                 </div>
-                <div class="col">
-                    <div class="card-block px-2">
-                        <h4 class="card-title">Title</h4>
-                        <p class="card-text">Price</p>
-                        <p class="card-text">Description</p>
-                    </div>
+                <div class="col card-block px-2">
+                    <h4 class="card-title">POST EXAMPLE</h4>
+                    <p class="card-text">Price</p>
+                    <p class="card-text">Description</p>
                 </div>
             </div>
         </div> -->

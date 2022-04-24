@@ -11,6 +11,14 @@
     float: left;
 }
 
+#image-post{
+    height: 34vh;
+}
+
+.col-auto{
+    min-width: 18vw;
+} 
+
 .card {
     padding-bottom: 1px;
 }
