@@ -1,3 +1,9 @@
+function drawAllPosts(posts) {
+    for (const post of posts) {
+        drawPost(post.thumbnail, post.title, '$', post.price, post.description)
+    }
+}
+
 function drawPost(url, title, currency, price, description) {
     const postsDiv = document.getElementById('posts');
 
@@ -47,4 +53,11 @@ function drawInfos(title, currency, price, description) {
     return infosDiv;
 }
 
-//drawPost('https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png?v8', 'title', '$', 158.5898, 'Descript')
+$.ajax({
+    type: 'GET',
+    data: {
+        page: 1,
+        pageSize: 2
+    },
+    url: 'http://localhost:3000/posts'
+}).then(posts => drawAllPosts(posts));
