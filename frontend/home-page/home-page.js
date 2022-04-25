@@ -78,5 +78,5 @@ function openPost() {
     const url = new URL(location.href);
     const filename = url.pathname.split('/').pop();
 
-    location.href = `publication/index.html?id=${id}`;
+    location.href = `../publication/index.html?id=${id}`;
 }
