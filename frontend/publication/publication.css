@@ -1,0 +1,15 @@
+#price {
+    position: absolute;
+    right: 10%;
+}
+
+#title {
+    position: absolute;
+    left: 15%;
+}
+
+#description {
+    position: absolute;
+    left: 15%;
+    bottom: 30%;
+}

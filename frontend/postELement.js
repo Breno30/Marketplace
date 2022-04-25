@@ -18,13 +18,15 @@ function drawAllPosts(posts) {
     while (postsDiv.firstChild && postsDiv.removeChild(postsDiv.firstChild));
     //filling div with posts
     for (const post of posts) {
-        drawPost(postsDiv, post.thumbnail, post.title, '$', post.price, post.description)
+        drawPost(postsDiv, post._id, post.thumbnail, post.title, '$', post.price, post.description)
     }
 }
 
-function drawPost(postsDiv, url, title, currency, price, description) {
+function drawPost(postsDiv, id, url, title, currency, price, description) {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card';
+    cardDiv.id = id
+    cardDiv.onclick = openPost;
     postsDiv.appendChild(cardDiv);
 
     const rowDiv = document.createElement('div');
@@ -67,4 +69,14 @@ function drawInfos(title, currency, price, description) {
     infosDiv.appendChild(descriptionP);
 
     return infosDiv;
+}
+
+function openPost() {
+    //taking id of post
+    const id = this.id;
+
+    const url = new URL(location.href);
+    const filename = url.pathname.split('/').pop();
+
+    location.href = `publication/index.html?id=${id}`;
 }
