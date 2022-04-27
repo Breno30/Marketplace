@@ -1,15 +1,15 @@
 loadPage();
 
-function loadPage(){
-    const searched = $('#search_bar').val();
+function loadPage() {
+    const vars = urlToVars(location.href);
+    const searched = vars.s;
+    const page = vars.page;
 
-    getPage(searched);
+    getPage(searched, page);
     getPagination(searched);
 }
 
-function getPage(searched) {
-    const url = new URL(location.href);
-    const page = url.searchParams.get("page") ? url.searchParams.get("page") : 1;
+function getPage(searched, page) {
 
     $.ajax({
         type: 'GET',

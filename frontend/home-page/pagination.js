@@ -1,8 +1,8 @@
 
-function getPagination(searched){
+function getPagination(searched) {
     $.ajax({
         type: 'GET',
-        data: {searched: searched},
+        data: { searched: searched },
         url: 'http://localhost:3000/posts/count'
     }).then(countPosts => {
         const pageSize = 10;
@@ -74,21 +74,33 @@ function drawButtonPrevious() {
 }
 
 function nextPage() {
-    const url = new URL(location.href);
-    const filename = url.pathname.split('/').pop();
-    //search for the page number (the first page doesn't have this parameter)
-    const page = url.searchParams.get("page") ? url.searchParams.get("page") : 1;
+    const url = location.href;
+    const filename = new URL(url).pathname.split('/').pop();
 
-    location.href = `${filename}?page=${parseInt(page) + 1}`;
+    var vars = urlToVars(url);
+    //get page from params
+    const page = vars.page ? parseInt(vars.page) : 1;
+    //decrement by one
+    const newPage = (page + 1).toString();
+    //replace old page with a new one
+    vars = { ...vars, page: newPage }
+
+    location.href = filename + varsToUrl(vars);
 }
 
 function previousPage() {
-    const url = new URL(location.href);
-    const filename = url.pathname.split('/').pop();
-    //search for the page number
-    const page = url.searchParams.get("page");
+    const url = location.href;
+    const filename = new URL(url).pathname.split('/').pop();
 
-    //check whether the page is the first
+    var vars = urlToVars(url);
+    //get page from params
+    const page = parseInt(vars.page);
+    //decrement by one
+    const newPage = (page - 1).toString();
+    //replace old page with a new one
+    vars = { ...vars, page: newPage }
+
+    //checks whether the page is the first
     if (page != 1)
-        location.href = `${filename}?page=${parseInt(page) - 1}`;
+        location.href = filename + varsToUrl(vars);
 }
