@@ -1,7 +1,15 @@
-function getPage() {
+loadPage();
+
+function loadPage(){
+    const searched = $('#search_bar').val();
+
+    getPage(searched);
+    getPagination(searched);
+}
+
+function getPage(searched) {
     const url = new URL(location.href);
     const page = url.searchParams.get("page") ? url.searchParams.get("page") : 1;
-    const searched = $('#search_bar').val();
 
     $.ajax({
         type: 'GET',
@@ -12,6 +20,8 @@ function getPage() {
         },
         url: 'http://localhost:3000/posts'
     }).then(posts => drawAllPosts(posts));
+
+
 }
 
 function drawAllPosts(posts) {

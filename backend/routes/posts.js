@@ -35,7 +35,13 @@ router.get('/posts', (req, res) => {
 });
 
 router.get('/posts/count', (req, res) => {
+    const searched = req.query.searched;
+
+    const conditions = {};
+    if (searched) conditions.title = { $regex: searched, $options: 'i' }
+
     Post
+        .find(conditions)
         .countDocuments()
         .then(result => res.send(result.toString()));
 });

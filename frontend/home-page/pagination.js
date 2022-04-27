@@ -1,13 +1,15 @@
-getPage();
 
-$.ajax({
-    type: 'GET',
-    url: 'http://localhost:3000/posts/count'
-}).then(countPosts => {
-    const pageSize = 10;
-    const countPages = Math.ceil(countPosts / pageSize);
-    drawPagination(countPages);
-});
+function getPagination(searched){
+    $.ajax({
+        type: 'GET',
+        data: {searched: searched},
+        url: 'http://localhost:3000/posts/count'
+    }).then(countPosts => {
+        const pageSize = 10;
+        const countPages = Math.ceil(countPosts / pageSize);
+        drawPagination(countPages);
+    });
+}
 
 function drawPagination(size) {
     const pagination = document.createElement('ul');
@@ -23,7 +25,11 @@ function drawPagination(size) {
     //draw "Next"
     pagination.appendChild(drawButtonNext());
 
-    document.getElementById('page-numbers').appendChild(pagination);
+    const pageNumbers = document.getElementById('page-numbers');
+    //clear last pagination
+    pageNumbers.innerHTML = '';
+    //add new pagination
+    pageNumbers.appendChild(pagination);
 }
 
 function drawNumber(number) {
@@ -62,7 +68,7 @@ function drawButtonPrevious() {
     pageLink.innerText = 'Previous';
     pageLink.onclick = previousPage;
 
-    
+
     pageItem.appendChild(pageLink);
     return pageItem;
 }
