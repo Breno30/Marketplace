@@ -6,7 +6,7 @@ function getPage() {
         type: 'GET',
         data: {
             page: page,
-            pageSize: 2
+            pageSize: 10
         },
         url: 'http://localhost:3000/posts'
     }).then(posts => drawAllPosts(posts));

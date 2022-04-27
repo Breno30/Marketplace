@@ -4,7 +4,7 @@ $.ajax({
     type: 'GET',
     url: 'http://localhost:3000/posts/count'
 }).then(countPosts => {
-    const pageSize = 2;
+    const pageSize = 10;
     const countPages = Math.ceil(countPosts / pageSize);
     drawPagination(countPages);
 });

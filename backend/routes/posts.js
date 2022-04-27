@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json());
 
-mongoose.connect('mongodb://localhost/marketplace');
+mongoose.connect('mongodb://127.0.0.1/marketplace');
 
 const postSchema = new mongoose.Schema({
     thumbnail:String,

@@ -1,5 +1,8 @@
 #top-bar {
+    overflow: hidden;
+    position: fixed;
     background: #373737;
+    top:0;
     height: 16vh;
     width: 100vw;
 }
@@ -11,13 +14,17 @@
     float: left;
 }
 
-#image-post{
+#image-post {
     height: 34vh;
 }
 
-.col-auto{
+#posts{
+    margin-top: 16vh;
+}
+
+.col-auto {
     min-width: 18vw;
-} 
+}
 
 .card {
     padding-bottom: 1px;
