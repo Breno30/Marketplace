@@ -23,21 +23,28 @@ function drawAllPosts(posts) {
 }
 
 function drawPost(postsDiv, id, url, title, currency, price, description) {
+
+
     const cardDiv = document.createElement('div');
-    cardDiv.className = 'card';
+    cardDiv.className = 'card col-md-8';
     cardDiv.id = id
     cardDiv.onclick = openPost;
-    postsDiv.appendChild(cardDiv);
 
     const rowDiv = document.createElement('div');
     rowDiv.className = 'row no-gutters'
 
     const imageDiv = drawImage(url)
-    rowDiv.appendChild(imageDiv);
 
     const infosDiv = drawInfos(title, currency, price, description);
+
+    const justifyCardDiv = document.createElement('div');
+    justifyCardDiv.className = 'd-flex justify-content-around';
+
+    rowDiv.appendChild(imageDiv);
     rowDiv.appendChild(infosDiv);
     cardDiv.appendChild(rowDiv);
+    justifyCardDiv.appendChild(cardDiv);
+    postsDiv.appendChild(justifyCardDiv);
 }
 
 function drawImage(url) {
