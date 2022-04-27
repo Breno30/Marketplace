@@ -1,12 +1,14 @@
 function getPage() {
     const url = new URL(location.href);
     const page = url.searchParams.get("page") ? url.searchParams.get("page") : 1;
+    const searched = $('#search_bar').val();
 
     $.ajax({
         type: 'GET',
         data: {
             page: page,
-            pageSize: 10
+            pageSize: 10,
+            searched: searched
         },
         url: 'http://localhost:3000/posts'
     }).then(posts => drawAllPosts(posts));

@@ -6,7 +6,7 @@ router.use(express.json());
 mongoose.connect('mongodb://127.0.0.1/marketplace');
 
 const postSchema = new mongoose.Schema({
-    thumbnail:String,
+    thumbnail: String,
     title: String,
     description: String,
     price: Number,
@@ -21,9 +21,13 @@ const Post = mongoose.model('Post', postSchema);
 router.get('/posts', (req, res) => {
     const page = req.query.page;
     const pageSize = req.query.pageSize;
+    const searched = req.query.searched;
+
+    const conditions = {}
+    if (searched) conditions.title = { $regex: searched, $options: 'i' };
 
     Post
-        .find()
+        .find(conditions)
         .skip((page - 1) * pageSize)
         .limit(pageSize)
         .then(result => res.send(result))
