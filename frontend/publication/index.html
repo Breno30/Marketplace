@@ -13,10 +13,22 @@
     <link rel="stylesheet" href="publication.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../main.js"></script>
     <script src="publication.js"></script>
 </head>
 
 <body>
+    <div class="navbar-fixed-top">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="search">
+                    <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
+                    <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="top-bar"></div>
     <div class="d-flex justify-content-center">
         <img id="image-post">
