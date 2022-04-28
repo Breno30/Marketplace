@@ -5,6 +5,7 @@ function loadPage() {
     const searched = vars.s;
     const page = vars.page;
 
+    $('#search_bar').val(searched);
     getPage(searched, page);
     getPagination(searched);
 }

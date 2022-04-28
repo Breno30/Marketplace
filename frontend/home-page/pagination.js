@@ -7,7 +7,7 @@ function getPagination(searched) {
     }).then(countPosts => {
         const pageSize = 10;
         const countPages = Math.ceil(countPosts / pageSize);
-        drawPagination(countPages);
+        if (countPages > 0) drawPagination(countPages);
     });
 }
 

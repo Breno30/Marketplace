@@ -4,12 +4,13 @@
 }
 
 #title {
-    position: absolute;
+    position: relative;
+    margin-top: 3%;
     left: 15%;
 }
 
 #description {
     position: absolute;
     left: 15%;
-    bottom: 30%;
+    margin-top: 2%;
 }
