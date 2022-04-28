@@ -29,9 +29,9 @@ function drawAllPosts(posts) {
     //remove everthing in this div
     while (postsDiv.firstChild && postsDiv.removeChild(postsDiv.firstChild));
     //filling div with posts
-    for (const post of posts) {
+    for (const post of posts)
         drawPost(postsDiv, post._id, post.thumbnail, post.title, '$', post.price, post.description)
-    }
+
 }
 
 function drawPost(postsDiv, id, url, title, currency, price, description) {
@@ -93,9 +93,5 @@ function drawInfos(title, currency, price, description) {
 function openPost() {
     //taking id of post
     const id = this.id;
-
-    const url = new URL(location.href);
-    const filename = url.pathname.split('/').pop();
-
     location.href = `../publication/index.html?id=${id}`;
 }

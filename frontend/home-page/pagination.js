@@ -39,8 +39,7 @@ function drawNumber(number) {
     const pageLink = document.createElement('a');
     pageLink.className = 'page-link';
     pageLink.innerText = number;
-    pageLink.href = `index.html?page=${number}`
-
+    pageLink.onclick = () => { goToPage(number) };
 
     pageItem.appendChild(pageLink);
     return pageItem;
@@ -71,6 +70,19 @@ function drawButtonPrevious() {
 
     pageItem.appendChild(pageLink);
     return pageItem;
+}
+
+function goToPage(page) {
+    console.log(page)
+    const url = location.href;
+    const filename = new URL(url).pathname.split('/').pop();
+
+    var vars = urlToVars(url);
+
+    //replace old page with a new one
+    vars = { ...vars, page: page }
+
+    location.href = filename + varsToUrl(vars);
 }
 
 function nextPage() {
