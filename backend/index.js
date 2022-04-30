@@ -1,6 +1,3 @@
-require('./models/user');
-require('./models/post');
-
 const posts = require('./routes/posts')
 const users = require('./routes/users')
 const auth = require('./routes/auth')

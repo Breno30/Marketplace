@@ -10,3 +10,5 @@ const Post = mongoose.model('Post', new mongoose.Schema({
     isPublic: Boolean,
     authorId: String
 }));
+
+module.exports = Post;

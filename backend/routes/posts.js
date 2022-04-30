@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json());
 
+const Post = require('../models/post');
+
 mongoose.connect('mongodb://127.0.0.1/marketplace');
 
 router.get('/posts', (req, res) => {

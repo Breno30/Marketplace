@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 router.use(express.json());
 
+var User = require('../models/user');
+
 mongoose.connect('mongodb://127.0.0.1/marketplace');
 
 router.get('/user/:id', (req, res) => {
