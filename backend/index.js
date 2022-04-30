@@ -1,4 +1,5 @@
 const posts = require('./routes/posts')
+const users = require('./routes/users')
 const express = require('express');
 const cors = require('cors')
 const app = express();
@@ -9,6 +10,7 @@ app.get('/', (req, res) => {
     res.send('API on');
 });
 
-app.use(posts)
+app.use(posts);
+app.use(users);
 
 app.listen(3000, () => console.log('Listening on port 3000...'));
