@@ -5,19 +5,6 @@ router.use(express.json());
 
 mongoose.connect('mongodb://127.0.0.1/marketplace');
 
-const postSchema = new mongoose.Schema({
-    thumbnail: String,
-    title: String,
-    description: String,
-    price: Number,
-    location: String,
-    date: Date,
-    isPublic: Boolean,
-    authorId: String
-});
-
-const Post = mongoose.model('Post', postSchema);
-
 router.get('/posts', (req, res) => {
     const page = req.query.page;
     const pageSize = req.query.pageSize;
