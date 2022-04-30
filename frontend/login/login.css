@@ -1,0 +1,19 @@
+.sidenav {
+    height: 100%;
+    width: 60%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0; 
+}
+
+.sidenav-text{
+    color: #fff;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.form {
+    margin-left: 65%;
+    margin-top: 10%;
+}
