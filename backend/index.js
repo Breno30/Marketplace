@@ -1,3 +1,5 @@
+const config = require('config');
+
 const posts = require('./routes/posts')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
@@ -17,4 +19,6 @@ app.use(posts);
 app.use(users);
 app.use(auth);
 
-app.listen(3000, () => console.log('Listening on port 3000...'));
+const port = config.get('PORT');
+
+app.listen(port, () => console.log(`Listening on port ${port}...`));
