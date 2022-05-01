@@ -10,15 +10,15 @@ function signUp() {
     $('#password-input').val('');
     //sending request
     $.ajax({
-        type:'POST',
-        contentType : 'application/json',
-        data:JSON.stringify({
-            name:  name,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            name: name,
             email: email,
             password: password
         }),
-        url:'http://localhost:3000/user'
-    }).then(r=>console.log(r))
+        url: 'http://localhost:3000/user'
+    }).then(result => { if (result) location.href = '../home-page/index.html'; })
 
 }
 

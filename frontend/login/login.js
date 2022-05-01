@@ -7,14 +7,15 @@ function login() {
     $('#password-input').val('');
     //sending request
     $.ajax({
-        type:'POST',
-        contentType : 'application/json',
-        data:JSON.stringify({
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
             email: email,
             password: password
         }),
-        url:'http://localhost:3000/auth'
-    }).then(r=>console.log(r))
+        url: 'http://localhost:3000/auth'
+    }).then(result => { if (result) location.href = '../home-page/index.html' })
 
 }
 
+const signUpRedirect = () => location.href = '../sign-up/index.html';

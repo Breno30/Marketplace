@@ -25,7 +25,12 @@ router.post('/user', async (req, res) => {
 
     user
         .save()
-        .then(user => res.send(`${user.name} registered!`))
+        // .then(user => res.send(`${user.name} registered!`))
+        .then(r => {
+            //return true if user was registered
+            if (r.name) res.send(true)
+            else res.send(false)
+        })
         .catch(err => res.send(err.message));
 });
 
