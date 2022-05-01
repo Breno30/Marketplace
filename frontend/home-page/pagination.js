@@ -3,7 +3,7 @@ function getPagination(searched) {
     $.ajax({
         type: 'GET',
         data: { searched: searched },
-        url: 'http://localhost:3000/posts/count'
+        url: `${config.api_url}/posts/count`
     }).then(countPosts => {
         const pageSize = 10;
         const countPages = Math.ceil(countPosts / pageSize);

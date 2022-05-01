@@ -6,7 +6,7 @@ function getPost() {
 
     $.ajax({
         type: 'GET',
-        url: `http://localhost:3000/post/${id}`
+        url: `${config.api_url}/post/${id}`
     }).then(infos => { 
         drawPostBody(infos.title, infos.description,'$', infos.price, infos.thumbnail);
     })

@@ -13,7 +13,7 @@ function login() {
             email: email,
             password: password
         }),
-        url: 'http://localhost:3000/auth'
+        url: `${config.api_url}/auth`
     }).then(result => { if (result) location.href = '../home-page/index.html' })
 
 }
