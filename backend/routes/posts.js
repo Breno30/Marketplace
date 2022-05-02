@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth')
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -45,7 +46,7 @@ router.get('/post/:id', (req, res) => {
 });
 
 
-router.post('/post', (req, res) => {
+router.post('/post',auth, (req, res) => {
     const post = new Post(req.body);
 
     post.save()

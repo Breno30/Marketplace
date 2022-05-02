@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const mongoose = require('mongoose');
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -17,19 +18,19 @@ router.get('/user/:id', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
-router.post('/user', async (req, res) => {
+router.post('/user', auth, async (req, res) => {
     let user = new User(req.body);
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
 
+    const token = user.generateAuth();
+
     user
         .save()
-        // .then(user => res.send(`${user.name} registered!`))
         .then(r => {
-            //return true if user was registered
-            if (r.name) res.send(true)
-            else res.send(false)
+            //return true if name is in the object
+            res.header('x-auth-header', token).send(Boolean(r.name));
         })
         .catch(err => res.send(err.message));
 });
