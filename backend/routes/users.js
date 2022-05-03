@@ -18,7 +18,7 @@ router.get('/user/:id', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
-router.post('/user', auth, async (req, res) => {
+router.post('/user', async (req, res) => {
     let user = new User(req.body);
 
     const salt = await bcrypt.genSalt(10);
