@@ -9,11 +9,18 @@ var User = require('../models/user');
 
 mongoose.connect('mongodb://127.0.0.1/marketplace');
 
+router.get('/user/me', auth, async (req, res) => {
+    //return current user
+    const user = await User.findById(req.user._id).select('_id name email');
+    res.send(user);
+});
+
 router.get('/user/:id', (req, res) => {
     const id = req.params.id.toString();
 
     User
         .findById(id)
+        .select('_id name email')
         .then(result => res.send(result))
         .catch(err => res.send(err.message));
 });
