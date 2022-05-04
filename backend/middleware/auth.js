@@ -3,7 +3,9 @@ const config = require('config');
 
 function auth(req, res, next) {
 
-    const token = req.header('x-auth-token');
+
+    const token = req.cookies.token;
+
     if (!token) return res.status(401).send('No token provided!');
 
     try {
