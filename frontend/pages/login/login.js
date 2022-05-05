@@ -19,4 +19,4 @@ function login() {
     })
 }
 
-const signUpRedirect = () => location.href = '../sign-up/index.html';
+const signUpRedirect = () => location.href = 'signup.html';
