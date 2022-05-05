@@ -14,8 +14,9 @@ function login() {
             password: password
         }),
         url: `${config.api_url}/auth`
-    }).then(result => { if (result) location.href = '../home-page/index.html' })
-
+    }).then(token => {
+        document.cookie = `token=${token}`;
+    })
 }
 
 const signUpRedirect = () => location.href = '../sign-up/index.html';
