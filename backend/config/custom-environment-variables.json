@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey": "Marketplace_jwtPrivateKey"
+    "jwtPrivateKey": "Marketplace_jwtPrivateKey",
+    "db": "Marketplace_db"
 }

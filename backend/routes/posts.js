@@ -1,3 +1,4 @@
+const config = require('config');
 const auth = require('../middleware/auth')
 const mongoose = require('mongoose');
 const express = require('express');
@@ -6,9 +7,9 @@ router.use(express.json());
 
 const Post = require('../models/post');
 
-mongoose.connect('mongodb://127.0.0.1/marketplace');
+mongoose.connect(config.get('db'));
 
-router.get('/posts', (req, res) => {
+router.get('/posts',(req, res) => {
     const page = req.query.page;
     const pageSize = req.query.pageSize;
     const searched = req.query.searched;

@@ -1,3 +1,4 @@
+const config = require('config');
 const mongoose = require('mongoose');
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -6,7 +7,7 @@ router.use(express.json());
 
 var User = require('../models/user');
 
-mongoose.connect('mongodb://127.0.0.1/marketplace');
+mongoose.connect(config.get('db'));
 
 router.post('/auth', async (req, res) => {
     const user = await User.findOne({ email: req.body.email });

@@ -19,6 +19,9 @@ function getPage(searched, page) {
             pageSize: 10,
             searched: searched
         },
+        xhrFields: {
+            withCredentials: true
+        },
         url: `${config.api_url}/posts`
     }).then(posts => drawAllPosts(posts));
 

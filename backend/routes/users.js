@@ -1,3 +1,4 @@
+const config = require('config');
 const auth = require('../middleware/auth');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -7,7 +8,7 @@ router.use(express.json());
 
 var User = require('../models/user');
 
-mongoose.connect('mongodb://127.0.0.1/marketplace');
+mongoose.connect(config.get('db'));
 
 router.get('/user/me', auth, async (req, res) => {
     //return current user
