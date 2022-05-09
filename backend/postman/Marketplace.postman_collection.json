@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "3c1606c1-b722-4b24-9d80-40015af02d6b",
+		"name": "Marketplace",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Count Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/posts/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"thumbnail\":\"https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png?v8\",\r\n    \"title\":\"pencil\",\r\n    \"description\":\"\",\r\n    \"price\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Example\",\r\n    \"email\":\"example@gmail.com\",\r\n    \"password\":\"pass1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"example@gmail.com\",\r\n    \"password\":\"pass1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
