@@ -19,7 +19,7 @@ router.post('/auth', async (req, res) => {
 
     const token = user.generateAuth();
     res.cookie("token",token);
-    res.send("cookied sent");
+    res.send(true);
 });
 
 module.exports = router;

@@ -9,13 +9,16 @@ function login() {
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
+        xhrFields: {
+            withCredentials: true
+        },
         data: JSON.stringify({
             email: email,
             password: password
         }),
         url: `${config.api_url}/auth`
-    }).then(token => {
-        document.cookie = `token=${token}`;
+    }).then(response => {
+        if (response === true) location.href = 'home-page.html'
     })
 }
 
