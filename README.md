@@ -36,4 +36,4 @@ Marketplace/backend> mongoimport --db Marketplace --collection Posts --file auto
 Marketplace/backend> npm run dev
 ``` 
 
-5. Open `Marketplace/frontend/home-page/index.html`
+5. Open `Marketplace/frontend/pages/home-page.html`
