@@ -37,8 +37,11 @@ router.post('/user', async (req, res) => {
     user
         .save()
         .then(r => {
-            //return true if name is in the object
-            res.header('x-auth-header', token).send(Boolean(r.name));
+            //return only if name is in the object
+            if (r.name)
+                res.cookie("token", token,{
+                    httpOnly: true
+                }).send(true);
         })
         .catch(err => res.send(err.message));
 });
