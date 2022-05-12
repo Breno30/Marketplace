@@ -12,13 +12,16 @@ function signUp() {
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
+        xhrFields: {
+            withCredentials: true
+        },
         data: JSON.stringify({
             name: name,
             email: email,
             password: password
         }),
         url: `${config.api_url}/user`
-    }).then(result => { if (result===true) location.href = '../home-page/index.html'; })
+    }).then(result => { if (result===true) location.href = 'home-page.html'; })
 
 }
 
