@@ -21,7 +21,9 @@ function signUp() {
             password: password
         }),
         url: `${config.api_url}/user`
-    }).then(result => { if (result===true) location.href = 'home-page.html'; })
+    }).then(result => {
+        if (result === true) location.href = 'home-page.html';
+    })
 
 }
 
