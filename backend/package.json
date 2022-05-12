@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": "16.15.0"
   },
   "author": "Breno do Nascimento",
   "license": "ISC",
