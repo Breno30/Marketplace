@@ -31,6 +31,6 @@ app.use(posts);
 app.use(users);
 app.use(auth);
 
-const port = config.get('PORT');
+const port = process.env.PORT || config.get('PORT');
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
