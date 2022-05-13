@@ -8,7 +8,7 @@ function verifyToken() {
             withCredentials: true
         },
         url: `${config.api_url}/user/me`
-    }).then(result => { if (result.name) location.href = 'home-page.html'; })
+    }).then(result => { if (result.name) location.href = '../home-page/home-page.html'; })
 }
 
 function login() {
@@ -30,6 +30,6 @@ function login() {
         }),
         url: `${config.api_url}/auth`
     }).then(response => {
-        if (response === true) location.href = 'home-page.html';
+        if (response === true) location.href = '../home-page/home-page.html';
     })
 }
