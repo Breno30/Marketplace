@@ -1,6 +1,6 @@
 function searchRedirection() {
     const searched = $('#search_bar').val();
-    location.href = `../home-page/index.html?s=${searched}`
+    location.href = `../home-page/home-page.html?s=${searched}`
 }
 
 function urlToVars(url) {

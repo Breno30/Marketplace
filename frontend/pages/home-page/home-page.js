@@ -97,5 +97,5 @@ function drawInfos(title, currency, price, description) {
 function openPost() {
     //taking id of post
     const id = this.id;
-    location.href = `publication.html?id=${id}`;
+    location.href = `../publication/publication.html?id=${id}`;
 }
