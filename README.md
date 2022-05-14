@@ -1,5 +1,5 @@
 # Marketplace - Sell and Buy
-[Access here](https://breno30.github.io/Marketplace)
+[Access here](https://breno30.github.io/Marketplace/frontend/pages/home-page/home-page.html)
 <br>
 
 # Stacks
