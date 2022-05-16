@@ -14,16 +14,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="../../style.css">
-    
+
     <script src="../../utils/config.js"></script>
-    <script src="../../utils/main.js" defer></script>
-    <script src="pagination.js" defer></script>
-    <script src="home-page.js" defer></script>
 
 </head>
 
 
-<body>
+<body id="app">
     <div class="navbar-fixed-top">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-8">
@@ -34,37 +31,85 @@
             </div>
         </div>
     </div>
-    
+
     <!-- <div id="side-menu" cla1ss="d-none d-md-inline"></div> -->
     <div id="posts">
-        <!-- <div class="d-flex justify-content-around">
+        <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="d-flex justify-content-around">
             <div class="card col-md-8">
                 <div class="row no-gutters">
                     <div class="col-auto">
-                        <img id="image-post"
-                            src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png?v8">
+                        <img id="image-post" :src="post.thumbnail">
                     </div>
                     <div class="col card-block px-2">
-                        <h4 class="card-title">POST EXAMPLE</h4>
-                        <p class="card-text">Price</p>
-                        <p class="card-text">Description</p>
+                        <h4 class="card-title">{{post.title}}</h4>
+                        <p class="card-text">R$ {{post.price}}</p>
+                        <p class="card-text">{{post.description}}</p>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 
     <div class="d-flex justify-content-around">
         <div id="page-numbers" class="d-flex justify-content-center col-md-8">
-            <!-- <ul class="pagination">
-            <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
-            <li class="page-item"><a class="page-link" href="index.html?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="index.html?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="index.html?page=3">3</a></li>
-            <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
-        </ul>     -->
+
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
+
+                <li v-for="page in pageCount" class="page-item">
+                    <a class="page-link" :href=`?page=${page}`>{{page}}</a>
+                </li>
+                <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
+            </ul>
         </div>
     </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../utils/main.js" defer></script>
+    <script type="module">
+
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    vars: {},
+                    page: null,
+                    pageSize: 10,
+                    searched: null,
+                    posts: null,
+                    pageCount: null
+                }
+            },
+            methods: {
+                openPost(id) {
+                    location.href = `../publication/publication.html?id=${id}`;
+                }
+            },
+            mounted() {
+                this.vars = urlToVars(location.href)
+                this.page = this.vars.page
+                this.searched = this.vars.s
+
+                axios
+                    .get(`${config.api_url}/posts`, {
+                        params: {
+                            page: this.page,
+                            pageSize: this.pageSize,
+                            searched: this.searched
+                        }
+                    })
+                    .then(response => (this.posts = response.data))
+
+                axios
+                    .get(`${config.api_url}/posts/count`)
+                    .then(response => (this.pageCount = Math.ceil(response.data / 10)))
+            }
+        });
+
+        app.mount('#app');
+
+    </script>
 </body>
 
 </html>
