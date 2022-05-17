@@ -20,7 +20,7 @@ git clone https://github.com/Breno30/Marketplace.git
 2. Open the backend folder and install dependencies 
 
 ```
-Marketplace/backend> npm i
+Marketplace/backend> npm install
 ```
 
 2. Create database "Marketplace" with Collection "Posts"
@@ -31,7 +31,7 @@ Marketplace/backend> npm i
 Marketplace/backend> mongoimport --db Marketplace --collection Posts --file auto_generated_posts.json --jsonArray
 ```
 
-4. In the same the following command
+4. In the same folder, run the following command
 ```
 Marketplace/backend> npm run dev
 ``` 
