@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="app">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pub</title>
+    <title>{{post.title}}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,7 +16,6 @@
 
     <script src="../../utils/config.js"></script>
     <script src="../../utils/main.js"></script>
-    <script src="publication.js"></script>
 </head>
 
 <body>
@@ -33,25 +32,48 @@
 
     <div id="top-bar"></div>
     <div class="d-flex justify-content-center">
-        <img id="image-post">
+        <img id="image-post" :src="post.thumbnail">
     </div>
     <hr>
 
-
+    
     <div>
         <div id="title">
-            <h2 id="title-text"></h2>
+            <h2 id="title-text">{{post.title}}</h2>
         </div>
 
         <div id="price">
-            <h1 id="price-text"></h1>
+            <h1 id="price-text">R$ {{post.price}}</h1>
         </div>
 
         <div id="description">
-            <h6 id="description-text"></h6>
+            <h6 id="description-text">{{post.description}}</h6>
         </div>
     </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script>
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    url: new URL(location.href),
+                    id: null,
+                    post: {}
+                }
+            },
+            mounted() {
+                this.id = urlToVars(this.url.search)["id"]
+                axios
+                    .get(`${config.api_url}/post/${this.id}`)
+                    .then(response => (this.post = response.data))
+            }
+        });
+
+        app.mount('#app');
+
+
+    </script>
 </body>
 
 </html>
