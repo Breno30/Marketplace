@@ -22,7 +22,7 @@ function signUp() {
         }),
         url: `${config.api_url}/user`
     }).then(result => {
-        if (result === true) location.href = 'home-page.html';
+        if (result === true) location.href = '../home-page/home-page.html';
     })
 
 }

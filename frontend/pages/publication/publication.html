@@ -32,7 +32,7 @@
 
 
     <div class="d-flex justify-content-center">
-        <img  v-if="post.thumbnail" id="image-post" :src="post.thumbnail">
+        <img  v-if="post.thumbnail" id="image-post" :src="`data:image/png;base64, ${post.thumbnail}`">
         <img  v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
     </div>
     
