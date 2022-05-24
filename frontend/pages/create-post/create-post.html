@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,33 +14,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="../../style.css">
-    
+
     <script src="../../utils/config.js"></script>
     <script src="../../utils/main.js" defer></script>
-    <script src="create-post.js" defer></script>
 </head>
-<body>
+
+<body id="app">
     <div class="form">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
-                <form>
+                <form method="POST" :action="`${api_url}/post`" enctype="multipart/form-data">
+                    <input type="file" name="image">
+       
                     <div class="form-group">
                         <label>Title</label>
-                        <input id="title-input" type="text" class="form-control" placeholder="Title">
+                        <input name="title" type="text" class="form-control" placeholder="Title">
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input id="description-input" type="text" class="form-control" placeholder="Description">
+                        <input name="description" type="text" class="form-control" placeholder="Description">
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <input id="price-input" type="number" class="form-control" placeholder="Price">
+                        <input name="price" type="number" class="form-control" placeholder="Price">
                     </div>
-                    <input value="Publish" onclick=publishPost() class="btn" type="button">
-                    <input value="Cancel" onclick=cancelPost() class="btn" type="button">
+                    <input type="submit">
+                    <!-- <input value="Publish" @click="publishPost" class="btn" type="button">
+                    <input value="Cancel" onclick=cancelPost() class="btn" type="button"> -->
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        Vue.createApp({
+
+            data: function () {
+                return {
+                    api_url: config.api_url,
+                    title: '',
+                    description: '',
+                    price: null
+                }
+            },
+            methods: {
+
+                publishPost() {
+                    axios
+                        .post(`${config.api_url}/post`,
+                            {
+                                title: this.title,
+                                description: this.description,
+                                price: this.price
+                            },
+                            {
+                                withCredentials: true
+                            }).then(response => console.log(response))
+                }
+            }
+
+        }).mount('#app');
+    </script>
 </body>
+
 </html>

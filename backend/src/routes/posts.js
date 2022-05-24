@@ -4,10 +4,23 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
+const fs = require('fs');
+const multer = require('multer');
+const path = require('path');
 
 const Post = require('../models/post');
 
 mongoose.connect(config.get('db'));
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '../Images/'));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
+const upload = multer({ storage: storage });
 
 router.get('/posts',(req, res) => {
     const page = req.query.page;
@@ -46,11 +59,18 @@ router.get('/post/:id', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
+router.post("/post", upload.single('image'), auth, (req, res) => {
+    var img = fs.readFileSync(req.file.path);
+    var encode_img = img.toString('base64');
 
-router.post('/post',auth, (req, res) => {
-    const post = new Post(req.body);
+    const post = new Post({
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        thumbnail: encode_img
+    });
 
-    post.save()
+   post.save()
         .then(res.send('Post successfully created!'))
         .catch(err => res.send(err.message));
 });
