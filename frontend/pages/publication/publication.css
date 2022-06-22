@@ -1,16 +1,22 @@
+.post-info {
+    width: 68%;
+    margin: 0 auto;
+}
+
+.post-info div{
+    display: flex;
+    justify-content: space-between;
+}
+
 #price {
-    position: absolute;
-    right: 10%;
+    padding-right: 2%;
+    font-size: 2.3em;
 }
 
 #title {
-    position: relative;
-    margin-top: 3%;
-    left: 15%;
+
 }
 
 #description {
-    position: absolute;
-    left: 15%;
-    margin-top: 2%;
+
 }

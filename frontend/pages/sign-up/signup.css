@@ -17,3 +17,12 @@
     margin-left: 65%;
     margin-top: 10%;
 }
+
+.login-form input{
+    padding-left: 10px;
+    border-radius: 5px;
+    background-color: #F0F0F0;
+    border: 0;
+    height: 40px;
+    margin-bottom: 24px;
+}

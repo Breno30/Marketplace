@@ -37,13 +37,13 @@
         <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="d-flex justify-content-around">
             <div class="card col-md-8">
                 <div class="row no-gutters">
-                    <div class="col-auto">
-                        <img id="image-post" :src="`data:image/png;base64, ${post.thumbnail}`">
+                    <div class="col-auto posts">
+                        <img class="image-post" :src="`data:image/png;base64, ${post.thumbnail}`">
                     </div>
                     <div class="col card-block px-2">
                         <h4 class="card-title">{{post.title}}</h4>
                         <p class="card-text">R$ {{post.price}}</p>
-                        <p class="card-text">{{post.description}}</p>
+                        <p class="card-text">{{post.description.slice(0,40)}}...</p>
                     </div>
                 </div>
             </div>
