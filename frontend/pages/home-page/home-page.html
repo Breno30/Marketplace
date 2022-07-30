@@ -41,9 +41,9 @@
                         <img class="image-post" :src="`data:image/png;base64, ${post.thumbnail}`">
                     </div>
                     <div class="col card-block px-2">
-                        <h4 class="card-title">{{post.title}}</h4>
-                        <p class="card-text">R$ {{post.price}}</p>
-                        <p class="card-text">{{post.description.slice(0,40)}}...</p>
+                        <h4 class="card-title">{{post.title ? post.title : ''}}</h4>
+                        <p class="card-text">R$ {{post.price ? post.price : ''}}</p>
+                        <p class="card-text">{{post.description ? post.description.slice(0,40) : ''}}...</p>
                     </div>
                 </div>
             </div>
