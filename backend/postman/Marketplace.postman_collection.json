@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3c1606c1-b722-4b24-9d80-40015af02d6b",
+		"_postman_id": "4558c026-4f2e-4508-8f74-878ebe0356f0",
 		"name": "Marketplace",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18930776"
 	},
 	"item": [
 		{
@@ -11,11 +12,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/posts/count",
+					"raw": "{{endpoint}}/posts/count",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"posts",
 						"count"
@@ -30,11 +30,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/posts",
+					"raw": "{{endpoint}}/posts",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"posts"
 					]
@@ -63,11 +62,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/post",
+					"raw": "{{endpoint}}/post",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"post"
 					]
@@ -96,11 +94,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/user",
+					"raw": "{{endpoint}}/user",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"user"
 					]
@@ -123,11 +120,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/auth",
+					"raw": "{{endpoint}}/auth",
 					"host": [
-						"localhost"
+						"{{endpoint}}"
 					],
-					"port": "3000",
 					"path": [
 						"auth"
 					]
