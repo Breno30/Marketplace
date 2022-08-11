@@ -5,8 +5,14 @@
     float: left;
 }
 
-#image-post {
-    height: 34vh;
+.publication .image-post {
+    max-width: 68%;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+.posts .image-post {
+    width: 22vw;
 }
 
 #posts{
@@ -43,4 +49,11 @@
     right: 5px;
     height: 50px;
     width: 110px;
+}
+
+.loading{
+    padding-top: 10%;
+    display: block;
+    margin: 0 auto;
+    width: 20vw;
 }

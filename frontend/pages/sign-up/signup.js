@@ -1,13 +1,13 @@
 
 function signUp() {
     //getting email and password typed
-    const name = $('#name-input').val();
-    const email = $('#email-input').val();
-    const password = $('#password-input').val();
+    const name = $('#name').val();
+    const email = $('#email').val();
+    const password = $('#password').val();
 
-    $('#name-input').val('');
-    $('#email-input').val('');
-    $('#password-input').val('');
+    $('#name').val('');
+    $('#email').val('');
+    $('#password').val('');
     //sending request
     $.ajax({
         type: 'POST',
