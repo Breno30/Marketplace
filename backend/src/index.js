@@ -24,7 +24,7 @@ app.use(cors({
 app.use(cp());
 
 app.get('/', (req, res) => {
-    res.send('API on');
+    res.send('API on!');
 });
 
 app.use(posts);
