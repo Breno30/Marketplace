@@ -22,9 +22,9 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage });
 
-router.get('/posts',(req, res) => {
-    const page = req.query.page;
-    const pageSize = req.query.pageSize;
+router.get('/posts', (req, res) => {
+    const page = req.query.page ?? 1;
+    const pageSize = req.query.pageSize ?? 8;
     const searched = req.query.searched;
 
     const conditions = {}
@@ -60,8 +60,8 @@ router.get('/post/:id', (req, res) => {
 });
 
 router.post("/post", upload.single('image'), auth, (req, res) => {
-    var img = fs.readFileSync(req.file.path);
-    var encode_img = img.toString('base64');
+    var encode_img = null;
+    if (req.file) encode_img = fs.readFileSync(req.file.path).toString('base64');
 
     const post = new Post({
         title: req.body.title,
@@ -70,7 +70,7 @@ router.post("/post", upload.single('image'), auth, (req, res) => {
         thumbnail: encode_img
     });
 
-   post.save()
+    post.save()
         .then(res.send('Post successfully created!'))
         .catch(err => res.send(err.message));
 });
