@@ -19,7 +19,9 @@ router.post('/auth', async (req, res) => {
 
     const token = user.generateAuth();
     res.cookie("token", token, {
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true
     }).send(true);
 });
 
