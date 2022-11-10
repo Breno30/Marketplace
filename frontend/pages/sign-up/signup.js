@@ -8,6 +8,7 @@ function signUp() {
     $('#name').val('');
     $('#email').val('');
     $('#password').val('');
+    $('#confirm-password').val('');
     //sending request
     $.ajax({
         type: 'POST',
