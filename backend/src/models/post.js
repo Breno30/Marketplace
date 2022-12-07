@@ -5,7 +5,10 @@ const Post = mongoose.model('Post', new mongoose.Schema({
     title: String,
     description: String,
     price: Number,
-    location: String,
+    location: {
+        type: { type: String },
+        coordinates: [Number],
+    },
     date: Date,
     isPublic: Boolean,
     authorId: String
