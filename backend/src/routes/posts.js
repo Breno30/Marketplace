@@ -60,14 +60,16 @@ router.get('/post/:id', (req, res) => {
 });
 
 router.post("/post", upload.single('image'), auth, (req, res) => {
-    var img = fs.readFileSync(req.file.path);
-    var encode_img = img.toString('base64');
 
     const post = new Post({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
-        thumbnail: encode_img
+        thumbnail: req.file.path,
+        location: { 
+            "type": "Point",
+            "coordinates": [req.body.longitude, req.body.latitude]
+        }
     });
 
    post.save()
