@@ -9,9 +9,11 @@ const Order = require('../models/order');
 mongoose.connect(config.get('db'))
 
 router.get('/orders', (req, res) => {
+    const user = req.query.user
     const product = req.query.product
 
     const conditions = {}
+    if(user) conditions.userId = user
     if(product) conditions.productId = product
 
     Order
@@ -21,6 +23,7 @@ router.get('/orders', (req, res) => {
 
 router.post("/order", (req, res) => {
     const order = new Order({
+        userId: 'String',
         productId: 'String',
         paymentId: 'String',
         deliveryId: 'String'
