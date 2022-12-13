@@ -8,6 +8,17 @@ const Order = require('../models/order');
 
 mongoose.connect(config.get('db'))
 
+router.get('/orders', (req, res) => {
+    const product = req.query.product
+
+    const conditions = {}
+    if(product) conditions.productId = product
+
+    Order
+        .find(conditions)
+        .then(result => res.send(result))
+});
+
 router.post("/order", (req, res) => {
     const order = new Order({
         productId: 'String',
