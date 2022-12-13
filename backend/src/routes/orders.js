@@ -21,12 +21,12 @@ router.get('/orders', (req, res) => {
         .then(result => res.send(result))
 });
 
-router.post("/order", (req, res) => {
+router.post('/order', (req, res) => {
     const order = new Order({
-        userId: 'String',
-        productId: 'String',
-        paymentId: 'String',
-        deliveryId: 'String'
+        userId: req.body.user_id,
+        productId: req.body.product_id,
+        paymentId: req.body.payment_id,
+        deliveryId: req.body.delivery_id
     });
 
     order.save()
