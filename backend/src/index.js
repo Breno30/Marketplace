@@ -7,6 +7,7 @@ if (!config.get('jwtPrivateKey')){
 
 const posts = require('./routes/posts')
 const users = require('./routes/users')
+const orders = require('./routes/orders')
 const auth = require('./routes/auth')
 
 const express = require('express');
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
 app.use(posts);
 app.use(users);
+app.use(orders);
 app.use(auth);
 
 const port = process.env.PORT || config.get('PORT');
