@@ -10,30 +10,33 @@
 
 
 # How to run
-
-1. Clone this repository
+1. Set the following environment variables:
+    - <b>Marketplace_jwtPrivateKey</b>: random string
+    - <b>Marketplace_db</b>: mongodb://127.0.0.1/Marketplace
+    
+2. Clone this repository
 
 ```
 git clone https://github.com/Breno30/Marketplace.git
 ```
 <br>
 
-2. Open the backend folder and install dependencies 
+3. Open the backend folder and install dependencies 
 
 > <b>Marketplace/backend></b> `npm install`
 <br>
 
-3. Create database "Marketplace" with Collection "Posts"
+4. Create database "Marketplace" with Collection "Posts"
 <img src="https://user-images.githubusercontent.com/59184811/165992493-b6a55b5b-dd98-4970-b053-b5339fb2dc87.png" height="470">
 <br>
 
-4. Import posts from the json file
+5. Import posts from the json file
 > <b>Marketplace/backend></b> `mongoimport --db Marketplace --collection Posts --file auto_generated_posts.json --jsonArray`
 <br>
 
-5. In the same folder, run the following command
+6. In the same folder, run the following command
 > <b>Marketplace/backend></b> `npm run dev` 
 <br>
 
-6. Open `Marketplace/frontend/pages/home-page/home-page.html`
+7. Open `Marketplace/frontend/pages/home-page/home-page.html`
 <br>
