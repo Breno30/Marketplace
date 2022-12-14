@@ -21,6 +21,15 @@ router.get('/orders', (req, res) => {
         .then(result => res.send(result))
 });
 
+router.get('/order/:id', (req,res) => {
+    const id = req.params.id.toString();
+
+    Order
+        .findById(id)
+        .then(result => res.send(result))
+        .catch(err => res.send(err.message));
+})
+
 router.post('/order', (req, res) => {
     const order = new Order({
         userId: req.body.user_id,
