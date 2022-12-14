@@ -1,7 +1,12 @@
 const config = require('config');
 
 if (!config.get('jwtPrivateKey')){
-    console.error('FATAL ERROR: jwtPrivateKey is not defined.');
+    console.error('FATAL ERROR: Environment variable jwtPrivateKey is not defined.');
+    process.exit(1);
+}
+
+if (!config.get('db')){
+    console.error('FATAL ERROR: Environment variable db is not defined.');
     process.exit(1);
 }
 
