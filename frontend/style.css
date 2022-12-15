@@ -44,3 +44,12 @@
     height: 50px;
     width: 110px;
 }
+
+.loading {
+    display: flex;
+}
+
+.loading img {
+    margin: 0 auto;
+    padding-top: 90px;
+}

@@ -50,11 +50,11 @@
         </div>
     </div>
 
-    <div v-else>
+    <div v-else class="loading">
         <img src="../../images/loading.gif" />
     </div>
 
-    <div v-if="pageCount" class="d-flex justify-content-around">
+    <div v-if="pageCount && posts" class="d-flex justify-content-around">
         <div id="page-numbers" class="d-flex justify-content-center col-md-8">
 
             <ul class="pagination">
@@ -92,7 +92,7 @@
             },
             mounted() {
                 this.vars = urlToVars(location.href)
-                this.page = this.vars.page
+                this.page = this.vars.page ?? 1
                 this.searched = this.vars.s
 
                 axios
@@ -103,7 +103,7 @@
                             searched: this.searched
                         }
                     })
-                    .then(response => (this.posts = response.data))
+                    .then(response => (this.postse = response.data))
 
                 axios
                     .get(`${config.api_url}/posts/count`)
