@@ -103,7 +103,7 @@
                             searched: this.searched
                         }
                     })
-                    .then(response => (this.postse = response.data))
+                    .then(response => (this.posts = response.data))
 
                 axios
                     .get(`${config.api_url}/posts/count`)
