@@ -59,6 +59,15 @@ router.get('/post/:id', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
+router.put('/post/:id', async (req, res) => {
+    const id = req.params.id;
+    const update = (({ title, description, price }) => ({ title, description, price })) (req.body);
+    const post = await Post.findOneAndUpdate({id}, update);
+    post.save();
+
+    res.send(post);
+});
+
 router.post("/post", upload.single('image'), auth, (req, res) => {
 
     const post = new Post({

@@ -156,6 +156,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"{{$randomNoun}}\",\n    \"description\": \"{{$randomPhrase}}\",\n    \"price\": {{$randomPrice}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/post/asd",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"post",
+								"asd"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
