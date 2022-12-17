@@ -26,6 +26,22 @@ router.get('/user/:id', (req, res) => {
         .catch(err => res.send(err.message));
 });
 
+router.put('/user/:id', auth, async (req, res) => {
+    const id = req.params.id;
+
+    const update = (({name, email}) => ({name, email})) (req.body);
+    const user = await User.findOneAndUpdate({_id: id}, update);
+    if (!user) return res.send(false);
+
+    if (req.body.password) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(req.body.password, salt);
+    }
+
+    user.save();
+    res.send(user);
+});
+
 router.post('/user', async (req, res) => {
     let user = new User(req.body);
 

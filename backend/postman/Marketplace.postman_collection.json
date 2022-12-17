@@ -415,6 +415,126 @@
 					]
 				},
 				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomEmail}}\",\r\n    \"password\":\"pass1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/{{current_user_id}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"{{current_user_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomEmail}}\",\r\n    \"password\":\"pass1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/{{current_user_id}}",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"{{current_user_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "171"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ab-E0MZndE9GD9WxPRYRgfr9mVQ7NM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Dec 2022 11:14:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"639da20b39144f19ca791bca\",\n    \"name\": \"Jeffrey Wolff\",\n    \"email\": \"Ari.Lind1@hotmail.com\",\n    \"password\": \"$2b$10$.N90c7Dg0G43/a1NX6W3ZOngms5FvTiZQCGsnXJTw5xa/o6Ri9Nrm\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
 					"name": "Get Current User",
 					"event": [
 						{
