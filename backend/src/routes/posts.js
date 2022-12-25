@@ -17,7 +17,11 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname, '../Images/'));
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        const fileName = req.body.title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '_');
+        const fileExtension = path.extname(file.originalname);
+        const currentTime = new Date().toISOString();
+        
+        cb(null, `${fileName}_${currentTime}${fileExtension}`)
     }
 })
 const upload = multer({ storage: storage });
@@ -74,7 +78,7 @@ router.post("/post", upload.single('image'), auth, (req, res) => {
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
-        thumbnail: req.file.path,
+        thumbnail: req.file.filename,
         location: { 
             "type": "Point",
             "coordinates": [req.body.longitude, req.body.latitude]
