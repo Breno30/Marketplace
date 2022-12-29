@@ -39,8 +39,6 @@
                         <input name="price" type="number" class="form-control" placeholder="Price">
                     </div>
                     <input type="submit">
-                    <!-- <input value="Publish" @click="publishPost" class="btn" type="button">
-                    <input value="Cancel" onclick=cancelPost() class="btn" type="button"> -->
                 </form>
             </div>
         </div>
@@ -54,27 +52,9 @@
 
             data: function () {
                 return {
-                    api_url: config.api_url,
-                    title: '',
-                    description: '',
-                    price: null
+                    api_url: config.api_url
                 }
             },
-            methods: {
-
-                publishPost() {
-                    axios
-                        .post(`${config.api_url}/post`,
-                            {
-                                title: this.title,
-                                description: this.description,
-                                price: this.price
-                            },
-                            {
-                                withCredentials: true
-                            }).then(response => console.log(response))
-                }
-            }
 
         }).mount('#app');
     </script>
