@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="app">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -19,40 +19,42 @@
 </head>
 
 <body>
-    <div class="navbar-fixed-top">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="search">
-                    <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
-                    <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
+    <div id="app">
+        <div class="navbar-fixed-top">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-8">
+                    <div class="search">
+                        <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
+                        <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="d-flex justify-content-center">
-        <img  v-if="post.thumbnail" id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
-        <img  v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
-    </div>
-    
-    <hr>
-
-
-    <div>
-        <div id="title">
-            <h2 v-if="post.title">{{post.title}}</h2>
-            <h2 v-else>Loading title...</h2>
+        <div class="d-flex justify-content-center">
+            <img  v-if="post.thumbnail" id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
+            <img  v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
         </div>
+        
+        <hr>
 
-        <div id="price">
-            <h1 v-if="post.price">R$ {{post.price}}</h1>
-            <h1 v-else>Loading price...</h1>
-        </div>
 
-        <div id="description">
-            <h6 v-if="post.description">{{post.description}}</h6>
-            <h6 v-else></h6>
+        <div>
+            <div id="title">
+                <h2 v-if="post.title">{{post.title}}</h2>
+                <h2 v-else>Loading title...</h2>
+            </div>
+
+            <div id="price">
+                <h1 v-if="post.price">R$ {{post.price}}</h1>
+                <h1 v-else>Loading price...</h1>
+            </div>
+
+            <div id="description">
+                <h6 v-if="post.description">{{post.description}}</h6>
+                <h6 v-else></h6>
+            </div>
         </div>
     </div>
 

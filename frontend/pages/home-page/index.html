@@ -20,55 +20,57 @@
 </head>
 
 
-<body id="app">
-    <div class="navbar-fixed-top">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="search">
-                    <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
-                    <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div id="side-menu" cla1ss="d-none d-md-inline"></div> -->
-    <div v-if="posts" id="posts">
-        <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="d-flex justify-content-around">
-            <div class="card col-md-8">
-                <div class="row no-gutters">
-                    <div class="col-auto">
-                        <img id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
-                    </div>
-                    <div class="col card-block px-2">
-                        <h4 class="card-title">{{post.title}}</h4>
-                        <p class="card-text">R$ {{post.price}}</p>
-                        <p class="card-text">{{post.description}}</p>
+<body>
+    <div id="app">
+        <div class="navbar-fixed-top">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-8">
+                    <div class="search">
+                        <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
+                        <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div v-else class="loading">
-        <img src="../../images/loading.gif" />
-    </div>
+        <!-- <div id="side-menu" cla1ss="d-none d-md-inline"></div> -->
+        <div v-if="posts" id="posts">
+            <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="d-flex justify-content-around">
+                <div class="card col-md-8">
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <img id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
+                        </div>
+                        <div class="col card-block px-2">
+                            <h4 class="card-title">{{post.title}}</h4>
+                            <p class="card-text">R$ {{post.price}}</p>
+                            <p class="card-text">{{post.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div v-if="pageCount && posts" class="d-flex justify-content-around">
-        <div id="page-numbers" class="d-flex justify-content-center col-md-8">
+        <div v-else class="loading">
+            <img src="../../images/loading.gif" />
+        </div>
 
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
+        <div v-if="pageCount && posts" class="d-flex justify-content-around">
+            <div id="page-numbers" class="d-flex justify-content-center col-md-8">
 
-                <li v-for="page in pageCount" class="page-item">
-                    <a class="page-link" :href=`?page=${page}`>{{page}}</a>
-                </li>
-                <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
-            </ul>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
+
+                    <li v-for="page in pageCount" class="page-item">
+                        <a class="page-link" :href=`?page=${page}`>{{page}}</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-
+    
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../../utils/main.js" defer></script>
