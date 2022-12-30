@@ -20,16 +20,16 @@
 <body>
     <div id="app">
 
-        <form action="../home-page/" method="GET" class="search">
+        <form action="../home-page/" method="GET" class="search center">
             <input :value="searched" type="text" id="search_bar" name="s" class="form-control" placeholder="Search products here">
         </form>
 
         <!-- <div id="side-menu" cla1ss="d-none d-md-inline"></div> -->
-        <div v-if="posts" id="posts">
+        <div v-if="posts" id="posts" class="center">
             <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="publication">
 
-                <img class="center" v-if="post.thumbnail" id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
-                <img class="center" v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+                <img v-if="post.thumbnail" id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
+                <img v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
              
                 <div class="post-data">
                     <h1 id="title" v-if="post.title">{{post.title}}</h1>
@@ -37,6 +37,8 @@
 
                     <span id="price" v-if="post.price">R$ {{post.price}}</span>
                     <span id="price" v-else>Loading price...</span>
+
+                    <span id="description" v-if="post.description">{{post.description.length < 200 ? post.description : post.description.substring(0, 200) + ' ...' }}</span>
                 </div>
 
             </div>

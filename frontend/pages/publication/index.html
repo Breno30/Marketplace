@@ -19,7 +19,7 @@
 <body>
     <div id="app">
 
-        <form action="../home-page/" method="GET" class="search">
+        <form action="../home-page/" method="GET" class="search center">
             <input type="text" id="search_bar" name="s" class="form-control" placeholder="Search products here">
         </form>
  
@@ -37,7 +37,6 @@
             <span id="price" v-else>Loading price...</span>
     
             <span id="description" v-if="post.description">{{post.description}}</h6>
-            <span id="description" v-else></h6>
     
         </div>
     </div>
