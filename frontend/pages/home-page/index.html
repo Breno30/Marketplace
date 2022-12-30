@@ -7,13 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="home-page.css">
 
     <script src="../../utils/config.js"></script>
 
@@ -22,32 +19,26 @@
 
 <body>
     <div id="app">
-        <div class="navbar-fixed-top">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-md-8">
-                    <div class="search">
-                        <input type="text" id="search_bar" class="form-control" placeholder="Search products here">
-                        <button class="btn btn-primary" onclick=searchRedirection()>Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <form action="../home-page/" method="GET" class="search">
+            <input :value="searched" type="text" id="search_bar" name="s" class="form-control" placeholder="Search products here">
+        </form>
 
         <!-- <div id="side-menu" cla1ss="d-none d-md-inline"></div> -->
         <div v-if="posts" id="posts">
-            <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="d-flex justify-content-around">
-                <div class="card col-md-8">
-                    <div class="row no-gutters">
-                        <div class="col-auto">
-                            <img id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
-                        </div>
-                        <div class="col card-block px-2">
-                            <h4 class="card-title">{{post.title}}</h4>
-                            <p class="card-text">R$ {{post.price}}</p>
-                            <p class="card-text">{{post.description}}</p>
-                        </div>
-                    </div>
+            <div v-for="(post, i) in posts" :key="i" @click="openPost(post._id)" class="publication">
+
+                <img class="center" v-if="post.thumbnail" id="image-post" :src="`/backend/src/Images/${post.thumbnail}`">
+                <img class="center" v-else id="image-post" src="https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+             
+                <div class="post-data">
+                    <h1 id="title" v-if="post.title">{{post.title}}</h1>
+                    <h1 id="title" v-else>Loading title...</h1>
+
+                    <span id="price" v-if="post.price">R$ {{post.price}}</span>
+                    <span id="price" v-else>Loading price...</span>
                 </div>
+
             </div>
         </div>
 
@@ -55,7 +46,7 @@
             <img src="../../images/loading.gif" />
         </div>
 
-        <div v-if="pageCount && posts" class="d-flex justify-content-around">
+        <div v-if="pageCount && posts">
             <div id="page-numbers" class="d-flex justify-content-center col-md-8">
 
                 <ul class="pagination">
@@ -70,7 +61,7 @@
         </div>
     </div>
 
-    
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../../utils/main.js" defer></script>

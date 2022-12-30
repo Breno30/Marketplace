@@ -1,0 +1,12 @@
+.publication {
+    padding-bottom: 25px;
+}
+
+.post-data {
+	display: flex;
+    justify-content: space-between;
+}
+
+.post-data #price {
+	padding-top: 15px;
+}
