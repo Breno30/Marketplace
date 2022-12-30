@@ -2,6 +2,10 @@
     padding-bottom: 25px;
 }
 
+.publication #image-post {
+    width: 100%;
+}
+
 .post-data {
 	display: flex;
     justify-content: space-between;

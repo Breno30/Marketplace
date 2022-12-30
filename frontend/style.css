@@ -54,8 +54,8 @@ span {
 }
 
 #image-post {
+	display: block;
     padding-top: 20px;
-    width: 100%;
 }
 
 #price {
@@ -73,3 +73,8 @@ span {
     padding-top: 15px;
 }
 
+@media screen and (min-width: 840px) {
+	.center {
+		width: 840px;
+	}
+}
