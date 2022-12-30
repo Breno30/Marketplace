@@ -1,16 +1,19 @@
+#image-post {
+    padding-top: 20px;
+    width: 100%;
+}
+
 #price {
-    position: absolute;
-    right: 10%;
+    display: block;
+    text-align: end;
+    font-size: 2em;
 }
 
 #title {
-    position: relative;
-    margin-top: 3%;
-    left: 15%;
+    padding-top: 15px;
 }
 
 #description {
-    position: absolute;
-    left: 15%;
-    margin-top: 2%;
+    display: block;
+    padding-top: 15px;
 }

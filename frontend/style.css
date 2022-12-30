@@ -1,55 +1,54 @@
-#side-menu {
-    background: #96897f;
-    height: 100vh;
-    width: 18vw;
-    float: left;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 2px;
+	border: 0;
+    font-family: 'Roboto', sans-serif;
+	vertical-align: baseline;
 }
 
-#image-post {
-    height: 34vh;
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-#posts{
-    margin-top: 16vh;
+.center {
+    width: 82%;
+    margin: 0 auto;
 }
 
-.col-auto {
-    min-width: 18vw;
-}
-
-.card {
-    padding-bottom: 1px;
-}
-
-.card-img-top {
-    width: 15vw;
-}
-
-.card-block {
-    margin: 3vw;
+span {
+    font-size: 1.4em;
 }
 
 .search {
-    position: relative;
+	margin: 4px 10px 4px 10px;
 }
 
-.search input {
-    height: 60px;
-}
-
-.search button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 50px;
-    width: 110px;
-}
-
-.loading {
-    display: flex;
-}
-
-.loading img {
-    margin: 0 auto;
-    padding-top: 90px;
+.search #search_bar {
+	line-height: 1.8em;
+    font-size: 1.2em;
+    border: 0px;
+    background-color: white;
+    width: 100%;
+	box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 10%);
 }
