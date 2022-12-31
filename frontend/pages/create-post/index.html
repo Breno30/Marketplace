@@ -7,46 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="create-post.css">
 
     <script src="../../utils/config.js"></script>
     <script src="../../utils/main.js" defer></script>
 </head>
 
 <body>
-    <div id="app" class="form">
-        <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-                <form method="POST" :action="`${api_url}/post`" enctype="multipart/form-data">
-                    <input type="file" name="image">
-       
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input name="title" type="text" class="form-control" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description" type="text" class="form-control" placeholder="Description">
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input name="price" type="number" class="form-control" placeholder="Price">
-                    </div>
-                    <input type="submit">
-                </form>
-            </div>
-        </div>
+    <div id="app" class="create-post">
+        <form method="POST" :action="`${api_url}/post`" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input name="title" type="text" class="form-control" placeholder="Title">
+            <input name="description" type="text" class="form-control" placeholder="Description">
+            <input name="price" type="number" class="form-control" placeholder="Price">
+            <input type="submit" value="Publish Item">
+        </form>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
     <script>
         Vue.createApp({
 

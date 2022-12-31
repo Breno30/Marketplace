@@ -1,16 +1,32 @@
-.publication {
+.home-page .publication {
+    display: grid;
+    grid-template-columns: 6fr 8fr;
     padding-bottom: 25px;
+    cursor: pointer;
 }
 
-.publication #image-post {
+.home-page #image-post {
     width: 100%;
 }
 
-.post-data {
-	display: flex;
-    justify-content: space-between;
+.home-page .post-data {
+    padding: 20px;
 }
 
-.post-data #price {
+.home-page .post-data #price {
 	padding-top: 15px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    cursor: pointer;
+    padding: 8px;
+}
+
+.pagination .page-item:hover {
+    opacity: .6;
 }

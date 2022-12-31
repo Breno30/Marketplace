@@ -18,7 +18,7 @@
 
 
 <body>
-    <div id="app">
+    <div id="app" class="home-page">
 
         <form action="../home-page/" method="GET" class="search center">
             <input :value="searched" type="text" id="search_bar" name="s" class="form-control" placeholder="Search products here">
@@ -48,19 +48,15 @@
             <img src="../../images/loading.gif" />
         </div>
 
-        <div v-if="pageCount && posts">
-            <div id="page-numbers" class="d-flex justify-content-center col-md-8">
+        <ul v-if="pageCount && posts" class="pagination">
+            <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
 
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" onclick={previousPage()}>Previous</a></li>
+            <li v-for="page in pageCount" class="page-item">
+                <a class="page-link" :href=`?page=${page}`>{{page}}</a>
+            </li>
+            <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
+        </ul>
 
-                    <li v-for="page in pageCount" class="page-item">
-                        <a class="page-link" :href=`?page=${page}`>{{page}}</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" onclick={nextPage()}>Next</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 
 
