@@ -17,11 +17,12 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname, '../Images/'));
     },
     filename: (req, file, cb) => {
-        const fileName = req.body.title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '_');
-        const fileExtension = path.extname(file.originalname);
-        const currentTime = new Date().toISOString();
+        // const fileName = req.body.title.replace(/[\u0300-\u036f]/g, "").replace(' ', '_');
+        // const fileExtension = path.extname(file.originalname);
+        // const currentTime = new Date().toISOString();
+        // cb(null, `${fileName}_${currentTime}${fileExtension}`)
         
-        cb(null, `${fileName}_${currentTime}${fileExtension}`)
+        cb(null, file.originalname)
     }
 })
 const upload = multer({ storage: storage });
