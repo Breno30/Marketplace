@@ -19,7 +19,17 @@
 
 <body>
     <div id="app" class="home-page">
-
+ 
+        <div v-if="showSideBar" class="side-bar">
+            <button v-on:click="showSideBar = false">Close</button>
+            <ul class="items">
+                <li><a>My Profile</a></li>
+                <li><a href="../../pages/home-page/">Search</a></li>
+                <li><a href="../../pages/create-post/">Publish</a></li>
+            </ul>
+        </div>
+        <button v-on:click="showSideBar = true">Open</button>
+        
         <form action="../home-page/" method="GET" class="search center">
             <input :value="searched" type="text" id="search_bar" name="s" class="form-control" placeholder="Search products here">
         </form>
@@ -68,6 +78,7 @@
         let app = Vue.createApp({
             data: function () {
                 return {
+                    showSideBar: false,
                     vars: {},
                     page: null,
                     pageSize: 10,
