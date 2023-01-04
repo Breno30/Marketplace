@@ -3,3 +3,19 @@
         width: 42%;
     }
 }
+
+.button {
+    font-size: 2em;
+    line-height: 1.2em;
+    display: block;
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:hover {
+    font-weight: bold;
+    color: white;
+    background-color: black;
+}
