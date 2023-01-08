@@ -10,7 +10,7 @@ const path = require('path');
 
 const Post = require('../models/post');
 
-mongoose.connect(config.get('db'));
+mongoose.connect(process.env.Marketplace_db);
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -73,7 +73,7 @@ router.put('/post/:id', async (req, res) => {
     res.send(post);
 });
 
-router.post("/post", upload.single('image'), auth, (req, res) => {
+router.post("/post", upload.single('image'), (req, res) => {
 
     const post = new Post({
         title: req.body.title,

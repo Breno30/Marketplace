@@ -7,7 +7,7 @@ router.use(express.json());
 
 var User = require('../models/user');
 
-mongoose.connect(config.get('db'));
+mongoose.connect(process.env.Marketplace_db);
 
 router.post('/auth', async (req, res) => {
     const user = await User.findOne({ email: req.body.email });

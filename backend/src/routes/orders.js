@@ -11,7 +11,7 @@ const Post = require('../models/post');
 const Order = require('../models/order');
 const Transaction = require('../models/transaction');
 
-mongoose.connect(config.get('db'))
+mongoose.connect(process.env.Marketplace_db);
 
 router.get('/orders', (req, res) => {
   const user = req.query.user

@@ -8,7 +8,7 @@ router.use(express.json());
 
 var User = require('../models/user');
 
-mongoose.connect(config.get('db'));
+mongoose.connect(process.env.Marketplace_db);
 
 router.get('/user/me', auth, async (req, res) => {
     //return current user

@@ -1,11 +1,11 @@
 const config = require('config');
 
-if (!config.get('jwtPrivateKey')){
+if (!process.env.Marketplace_jwtPrivateKey){
     console.error('FATAL ERROR: Environment variable jwtPrivateKey is not defined.');
     process.exit(1);
 }
 
-if (!config.get('db')){
+if (!process.env.Marketplace_db){
     console.error('FATAL ERROR: Environment variable db is not defined.');
     process.exit(1);
 }
@@ -38,6 +38,6 @@ app.use(users);
 app.use(orders);
 app.use(auth);
 
-const port = process.env.PORT || config.get('PORT');
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));

@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateAuth = function () {
     //get Private Key from Environment Variable
-    const jwtPK =  config.get('jwtPrivateKey');
+    const jwtPK =  process.env.Marketplace_jwtPrivateKey;
     //generate token
     const token = jwt.sign({ _id: this._id }, jwtPK);
 
