@@ -1,5 +1,3 @@
-const config = require('config');
-
 if (!process.env.Marketplace_jwtPrivateKey){
     console.error('FATAL ERROR: Environment variable jwtPrivateKey is not defined.');
     process.exit(1);

@@ -1,5 +1,3 @@
-const config = require('config');
-
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -97,7 +95,9 @@ router.post('/order', async (req, res) => {
     deliveryId: 'placehbolder'
   });
 
-  order.save();
+  const responseOrder = await order.save();
+  if (responseOrder) res.send(responseOrder['id']);
+
 });
 
 module.exports = router;

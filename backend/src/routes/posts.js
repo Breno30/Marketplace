@@ -1,4 +1,3 @@
-const config = require('config');
 const auth = require('../middleware/auth')
 const mongoose = require('mongoose');
 const express = require('express');
