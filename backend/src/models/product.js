@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Post = mongoose.model('Post', new mongoose.Schema({
+const Product = mongoose.model('Product', new mongoose.Schema({
     thumbnail: String,
     title: String,
     description: String,
@@ -14,4 +14,4 @@ const Post = mongoose.model('Post', new mongoose.Schema({
     authorId: String
 }));
 
-module.exports = Post;
+module.exports = Product;

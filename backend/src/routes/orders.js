@@ -5,7 +5,7 @@ const axios = require('axios');
 
 router.use(express.json());
 const User = require('../models/user');
-const Post = require('../models/post');
+const Product = require('../models/product');
 const Order = require('../models/order');
 const Transaction = require('../models/transaction');
 
@@ -40,7 +40,7 @@ router.post('/order', async (req, res) => {
   const user = await User.findById(userId);
   const { name, email } = user;
   
-  const product = await Post.findById(productId);
+  const product = await Product.findById(productId);
   const { title, price } = product;
 
   // Transaction

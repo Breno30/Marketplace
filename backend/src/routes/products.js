@@ -7,7 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 const path = require('path');
 
-const Post = require('../models/post');
+const Product = require('../models/product');
 
 mongoose.connect(process.env.Marketplace_db);
 
@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage });
 
-router.get('/posts',(req, res) => {
+router.get('/products',(req, res) => {
     const page = req.query.page;
     const pageSize = req.query.pageSize;
     const searched = req.query.searched;
@@ -34,7 +34,7 @@ router.get('/posts',(req, res) => {
     const conditions = {}
     if (searched) conditions.title = { $regex: searched, $options: 'i' };
 
-    Post
+    Product
         .find(conditions)
         .skip((page - 1) * pageSize)
         .limit(pageSize)
@@ -42,39 +42,39 @@ router.get('/posts',(req, res) => {
         .catch(err => res.send(err.message));
 });
 
-router.get('/posts/count', (req, res) => {
+router.get('/products/count', (req, res) => {
     const searched = req.query.searched;
 
     const conditions = {};
     if (searched) conditions.title = { $regex: searched, $options: 'i' }
 
-    Post
+    Product
         .find(conditions)
         .countDocuments()
         .then(result => res.send(result.toString()));
 });
 
-router.get('/post/:id', (req, res) => {
+router.get('/product/:id', (req, res) => {
     const id = req.params.id.toString();
 
-    Post
+    Product
         .findById(id)
         .then(result => res.send(result))
         .catch(err => res.send(err.message));
 });
 
-router.put('/post/:id', async (req, res) => {
+router.put('/product/:id', async (req, res) => {
     const id = req.params.id;
     const update = (({ title, description, price }) => ({ title, description, price })) (req.body);
-    const post = await Post.findOneAndUpdate({id}, update);
-    post.save();
+    const product = await Product.findOneAndUpdate({id}, update);
+    product.save();
 
-    res.send(post);
+    res.send(product);
 });
 
-router.post("/post", upload.single('image'), (req, res) => {
+router.post("/product", upload.single('image'), (req, res) => {
 
-    const post = new Post({
+    const product = new Product({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
@@ -85,8 +85,8 @@ router.post("/post", upload.single('image'), (req, res) => {
         }
     });
 
-   post.save()
-        .then(res.send('Post successfully created!'))
+   product.save()
+        .then(res.send('Product successfully created!'))
         .catch(err => res.send(err.message));
 });
 

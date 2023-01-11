@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "81619d2b-77a7-43d0-b3ce-e47ad2a2d63f",
+		"_postman_id": "806311ae-b86d-42ee-89ab-f21ab207c23a",
 		"name": "Marketplace",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18930776"
@@ -10,7 +10,7 @@
 			"name": "Product",
 			"item": [
 				{
-					"name": "Count Posts",
+					"name": "Count Products",
 					"event": [
 						{
 							"listen": "test",
@@ -26,12 +26,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{endpoint}}/posts/count",
+							"raw": "{{endpoint}}/products/count",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"posts",
+								"products",
 								"count"
 							]
 						}
@@ -39,14 +39,14 @@
 					"response": []
 				},
 				{
-					"name": "Get Posts",
+					"name": "Get Products",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const posts = pm.response.json();",
-									"pm.environment.set(\"random_post_id\", _.sample(posts)._id);"
+									"const products = pm.response.json();",
+									"pm.environment.set(\"random_product_id\", _.sample(products)._id);"
 								],
 								"type": "text/javascript"
 							}
@@ -56,12 +56,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{endpoint}}/posts?page=1&pageSize=10&searched=",
+							"raw": "{{endpoint}}/products?page=1&pageSize=10&searched=",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"posts"
+								"products"
 							],
 							"query": [
 								{
@@ -82,25 +82,25 @@
 					"response": []
 				},
 				{
-					"name": "Get Specific Posts",
+					"name": "Get Specific Product",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{endpoint}}/post/{{post_id}}",
+							"raw": "{{endpoint}}/product/{{product_id}}",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"post",
-								"{{post_id}}"
+								"product",
+								"{{product_id}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Post",
+					"name": "Create Product",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -146,19 +146,19 @@
 							]
 						},
 						"url": {
-							"raw": "{{endpoint}}/post",
+							"raw": "{{endpoint}}/product",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"post"
+								"product"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update Post",
+					"name": "Update Product",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -178,13 +178,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/post/asd",
+							"raw": "{{endpoint}}/product/{{product_id}}",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"post",
-								"asd"
+								"product",
+								"{{product_id}}"
 							]
 						}
 					},
@@ -220,18 +220,6 @@
 							],
 							"path": [
 								"orders"
-							],
-							"query": [
-								{
-									"key": "user",
-									"value": "teste",
-									"disabled": true
-								},
-								{
-									"key": "product",
-									"value": "teste",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -268,7 +256,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\":\"{{current_user_id}}\",\n    \"product_id\":\"{{random_post_id}}\",\n    \"payment_id\":\"5ssdfsds6sfsdf\",\n    \"delivery_id\":\"ssf5sdfg7sdgv\"\n}",
+							"raw": "{\n    \"user_id\":\"{{current_user_id}}\",\n    \"product_id\":\"{{random_product_id}}\",\n    \"payment_type\":\"pix\",\n    \"address_id\":\"ssf5sdfg7sdgv\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -307,13 +295,7 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZkNzJmMjAzZjhlZjZlNDYwZTlmODMiLCJpYXQiOjE2NTE1MTg1NTl9.1Q_uaeC4wYhmg3LoRJMMEyvF8QERjci-jiEGxf88aDI",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomEmail}}\",\r\n    \"password\":\"pass1234\"\r\n}",
@@ -733,12 +715,12 @@
 			"value": "localhost"
 		},
 		{
-			"key": "post_id",
-			"value": "6391202aebb34349bfd4051b"
+			"key": "product_id",
+			"value": ""
 		},
 		{
 			"key": "order_id",
-			"value": "63990d86a28d5a896ddc3938"
+			"value": ""
 		}
 	]
 }

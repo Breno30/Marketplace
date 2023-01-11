@@ -8,7 +8,7 @@ if (!process.env.Marketplace_db){
     process.exit(1);
 }
 
-const posts = require('./routes/posts')
+const products = require('./routes/products')
 const users = require('./routes/users')
 const orders = require('./routes/orders')
 const auth = require('./routes/auth')
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     res.send('API on');
 });
 
-app.use(posts);
+app.use(products);
 app.use(users);
 app.use(orders);
 app.use(auth);
