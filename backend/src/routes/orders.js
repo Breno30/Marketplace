@@ -8,6 +8,7 @@ const User = require('../models/user');
 const Product = require('../models/product');
 const Order = require('../models/order');
 const Transaction = require('../models/transaction');
+const Delivery = require('../models/delivery');
 
 mongoose.connect(process.env.Marketplace_db);
 
@@ -38,10 +39,10 @@ router.post('/order', async (req, res) => {
   const productId = req.body.product_id;
 
   const user = await User.findById(userId);
-  const { name, email } = user;
+  const { name, email, addresses } = user;
   
   const product = await Product.findById(productId);
-  const { title, price } = product;
+  const { title, price, location } = product;
 
   // Transaction
   var data = JSON.stringify({
@@ -88,11 +89,21 @@ router.post('/order', async (req, res) => {
 
   transaction.save();
 
+  // Delivery
+  const delivery = new Delivery({
+    starting_location: location,
+    final_location: addresses[0].location
+  });
+
+  const { _id } = await delivery.save();
+  const deliveryId = _id;
+
+  // Order
   const order = new Order({
     userId,
     productId,
     paymentId,
-    deliveryId: 'placehbolder'
+    deliveryId
   });
 
   const responseOrder = await order.save();
