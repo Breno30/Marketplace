@@ -74,14 +74,16 @@ router.put('/product/:id', async (req, res) => {
 
 router.post("/product", upload.single('image'), (req, res) => {
 
+    const { title, description, price, longitude, latitude } = req.body;
+
     const product = new Product({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
+        title,
+        description,
+        price,
         thumbnail: req.file.filename,
         location: { 
             "type": "Point",
-            "coordinates": [req.body.longitude, req.body.latitude]
+            "coordinates": [longitude, latitude]
         }
     });
 
