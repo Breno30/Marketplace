@@ -98,7 +98,7 @@
                 this.searched = this.vars.s
 
                 axios
-                    .get(`${config.api_url}/posts`, {
+                    .get(`${config.api_url}/products`, {
                         params: {
                             page: this.page,
                             pageSize: this.pageSize,
@@ -108,7 +108,7 @@
                     .then(response => (this.posts = response.data))
 
                 axios
-                    .get(`${config.api_url}/posts/count`)
+                    .get(`${config.api_url}/products/count`)
                     .then(response => (this.pageCount = Math.ceil(response.data / 10)))
             }
         });

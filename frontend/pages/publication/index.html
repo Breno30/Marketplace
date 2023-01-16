@@ -58,7 +58,7 @@
             mounted() {
                 this.id = urlToVars(this.url.search)["id"]
                 axios
-                    .get(`${config.api_url}/post/${this.id}`)
+                    .get(`${config.api_url}/product/${this.id}`)
                     .then(response => (this.post = response.data))
             }
         });
