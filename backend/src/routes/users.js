@@ -42,10 +42,32 @@ router.put('/user/:id', auth, async (req, res) => {
 });
 
 router.post('/user', async (req, res) => {
-    let user = new User(req.body);
+
+    const { name, email, password, addresses } = req.body;
+    const { label, cep, country, state, city, neighbourhood, street, number, commentary, longitude, latitude } = addresses[0];
+
+    let user = new User({
+        name,
+        email,
+        addresses: [{
+            label,
+            cep,
+            country,
+            state,
+            city,
+            neighbourhood,
+            street,
+            number,
+            commentary,
+            location: {
+                "type": "Point",
+                "coordinates": [longitude, latitude]
+            }
+        }]
+    });
 
     const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.password, salt);
+    user.password = await bcrypt.hash(password, salt);
 
     const token = user.generateAuth();
 

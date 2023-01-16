@@ -1,5 +1,7 @@
-const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
+const addressSchema = require('../schemas/address')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -18,7 +20,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: 1024
-    }
+    },
+    orders: [{
+        type: String,
+        required: true
+    }],
+    addresses: [addressSchema]
 
 });
 
