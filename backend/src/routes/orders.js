@@ -48,6 +48,8 @@ const createTransaction = async (price, title, email, name) => {
 
   const response = await axios(config);
 
+  const { qr_code, qr_code_base64 } = response.data.point_of_interaction.transaction_data; 
+
   let transaction = new Transaction({
     mercadoPagoId: response.data._id,
     type: 'pix',
@@ -55,7 +57,7 @@ const createTransaction = async (price, title, email, name) => {
   });
 
   const { _id } = await transaction.save();
-  return _id;
+  return { _id, qr_code, qr_code_base64 };
 }
 
 const createDelivery = async (starting_location, final_location) => {
@@ -100,7 +102,8 @@ router.post('/order', async (req, res) => {
   const { title, price, location } = product;
 
   // Transaction
-  const paymentId = await createTransaction(price, title, email, name);
+  const transaction = await createTransaction(price, title, email, name);
+  const { paymentId, qr_code, qr_code_base64 } = transaction;
 
   // Delivery
   const deliveryId = await createDelivery(location, addresses[0].location);
@@ -114,7 +117,9 @@ router.post('/order', async (req, res) => {
   });
 
   const responseOrder = await order.save();
-  if (responseOrder) res.send(responseOrder['id']);
+  const { id } = responseOrder;
+
+  if (responseOrder) res.send({id, data: { qr_code, qr_code_base64 } });
 
 });
 
