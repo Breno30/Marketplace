@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    image: marketplace-backend
+    environment:
+      Marketplace_db: 'mongodb+srv://Breno:yyyyyyyy@jjjjjj.iiiiiii.mongodb.net' 
+      Marketplace_jwtPrivateKey: 'random54465445674'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/share/nginx/api
+  web-server:
+    image: marketplace-frontend
+    ports: 
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
