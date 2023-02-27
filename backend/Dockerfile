@@ -1,6 +1,6 @@
 FROM node:16
 
-COPY . /usr/share/nginx/api
+COPY ./backend /usr/share/nginx/api
 
 WORKDIR /usr/share/nginx/api
 

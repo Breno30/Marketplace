@@ -4,6 +4,14 @@ services:
   mongo:
     image: mongo
     restart: always
+  api-build:
+    image: marketplace-backend
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    environment:
+      Marketplace_db: mongodb://root:example@mongo:27017/
+      Marketplace_jwtPrivateKey: 'random54465445674'
   api:
     image: marketplace-backend
     environment:
@@ -13,9 +21,19 @@ services:
       - "3000:3000"
     volumes:
       - ./backend:/usr/share/nginx/api
+    depends_on:
+      - api-build
+
+  web-server-build:
+    image: marketplace-frontend
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
   web-server:
     image: marketplace-frontend
     ports: 
       - "8080:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - web-server-build
