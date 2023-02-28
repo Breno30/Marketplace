@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="create-order.css">
+
+    <script src="../../utils/config.js"></script>
+    <script src="../../utils/main.js"></script>
+</head>
+
+<body>
+    <div id="app" class="create-order">
+        <form method="POST" :action="`${api_url}/order`">
+            <input type="hidden" name="product_id" :value="`${id}`">
+            <input type="hidden" name="user_id" :value="`${userId}`">
+
+            Transaction:
+            <br>
+            <input type="radio" name="payment_type" id="pix" value="pix" />
+            <label for="pix">Pix</label>
+            <br>
+            <input type="radio" name="payment_type" id="bill" value="bill" />
+            <label for="bill">Bill</label>
+            <br>
+            <input type="radio" name="payment_type" id="credit-card" value="credit-card" />
+            <label for="credit-card">Credit Card</label>
+            <br>
+
+            <input type="submit" value="Publish Item">
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    url: new URL(location.href),
+                    api_url: config.api_url,
+                    id: null,
+                    userId: null,
+                    post: {}
+                }
+            },
+            mounted() {
+                this.id = urlToVars(this.url.search)["id"]
+                
+                axios
+                    .get(`${config.api_url}/product/${this.id}`)
+                    .then(response => (this.post = response.data))
+
+                                    
+                axios
+                    .get(`${config.api_url}/user/me`, { withCredentials: true })
+                    .then(response => (this.userId = response.data._id))
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

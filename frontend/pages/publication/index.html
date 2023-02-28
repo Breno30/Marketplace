@@ -38,7 +38,7 @@
     
             <span id="description" v-if="post.description">{{post.description}}</span>
 
-            <span class="button">Buy</span>
+            <span class="button" @click="goToOrder(post._id)">Buy</span>
     
         </div>
     </div>
@@ -53,6 +53,11 @@
                     url: new URL(location.href),
                     id: null,
                     post: {}
+                }
+            },            
+            methods: {
+                goToOrder(id) {
+                    location.href = `../create-order/?id=${id}`;
                 }
             },
             mounted() {

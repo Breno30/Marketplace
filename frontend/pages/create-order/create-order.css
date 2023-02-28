@@ -1,0 +1,14 @@
+.create-post form input {
+    display: inline-grid;
+}
+
+.create-post form input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.create-post form input[type=text],
+.create-post form input[type=number] {
+    border: 1px solid;
+}
