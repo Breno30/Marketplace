@@ -1,10 +1,7 @@
-if (!process.env.Marketplace_jwtPrivateKey){
-    console.error('FATAL ERROR: Environment variable jwtPrivateKey is not defined.');
-    process.exit(1);
-}
-
-if (!process.env.Marketplace_db){
-    console.error('FATAL ERROR: Environment variable db is not defined.');
+if (!process.env.Marketplace_jwtPrivateKey ||
+    !process.env.Marketplace_db ||
+    !process.env.Marketplace_MP_AUTH ){
+    console.error('FATAL ERROR: Environment variables are not defined.');
     process.exit(1);
 }
 
