@@ -94,9 +94,10 @@ router.get('/order/:id', (req, res) => {
 router.post('/order', async (req, res) => {
   const userId = req.body.user_id;
   const productId = req.body.product_id;
+  const address = req.body.address;
 
   const user = await User.findById(userId);
-  const { name, email, addresses } = user;
+  const { name, email } = user;
   
   const product = await Product.findById(productId);
   const { title, price, location } = product;
@@ -106,7 +107,7 @@ router.post('/order', async (req, res) => {
   const { paymentId, qr_code, qr_code_base64 } = transaction;
 
   // Delivery
-  const deliveryId = await createDelivery(location, addresses[0].location);
+  const deliveryId = await createDelivery(location, address);
 
   // Order
   const order = new Order({
