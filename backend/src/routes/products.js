@@ -76,16 +76,21 @@ router.post("/product", upload.single('image'), (req, res) => {
 
     const { title, description, price, longitude, latitude } = req.body;
 
-    const product = new Product({
+    var productObject = {
         title,
         description,
         price,
         thumbnail: req.file.filename,
-        location: { 
-            "type": "Point",
-            "coordinates": [longitude, latitude]
-        }
-    });
+        ...(longitude && latitude && 
+                {
+                location: {
+                        "type": "Point", 
+                        "coordinates": [longitude, latitude] 
+                    } 
+                })
+    };
+
+    const product = new Product(productObject);
 
    product.save()
         .then(res.send('Product successfully created!'))
