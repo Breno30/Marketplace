@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo
     restart: always
-  api-build:
+  api:
     image: marketplace-backend
     build:
       context: ./backend
@@ -12,28 +12,17 @@ services:
     environment:
       Marketplace_db: mongodb://mongoDB/
       Marketplace_jwtPrivateKey: 'random54465445674'
-  api:
-    image: marketplace-backend
-    environment:
-      Marketplace_db: mongodb://mongoDB/
-      Marketplace_jwtPrivateKey: 'random54465445674'
+      Marketplace_MP_AUTH: 'APP_USR-9999999999999999-999999-99999999999999999999999999999999-999999999'
     ports:
       - "3000:3000"
     volumes:
       - ./backend:/usr/share/nginx/api
-    depends_on:
-      - api-build
-
-  web-server-build:
+  web-server:
     image: marketplace-frontend
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
-  web-server:
-    image: marketplace-frontend
     ports: 
       - "8080:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
-    depends_on:
-      - web-server-build
