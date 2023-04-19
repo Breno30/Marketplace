@@ -10,12 +10,12 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile
     environment:
-      Marketplace_db: mongodb://root:example@mongo:27017/
+      Marketplace_db: mongodb://mongoDB/
       Marketplace_jwtPrivateKey: 'random54465445674'
   api:
     image: marketplace-backend
     environment:
-      Marketplace_db: mongodb://root:example@mongo:27017/
+      Marketplace_db: mongodb://mongoDB/
       Marketplace_jwtPrivateKey: 'random54465445674'
     ports:
       - "3000:3000"
