@@ -7,8 +7,8 @@ services:
   api-build:
     image: marketplace-backend
     build:
-      context: .
-      dockerfile: ./backend/Dockerfile
+      context: ./backend
+      dockerfile: ./Dockerfile
     environment:
       Marketplace_db: mongodb://root:example@mongo:27017/
       Marketplace_jwtPrivateKey: 'random54465445674'
@@ -27,8 +27,8 @@ services:
   web-server-build:
     image: marketplace-frontend
     build:
-      context: .
-      dockerfile: ./frontend/Dockerfile
+      context: ./frontend
+      dockerfile: ./Dockerfile
   web-server:
     image: marketplace-frontend
     ports: 
